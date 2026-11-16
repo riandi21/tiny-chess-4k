@@ -21,6 +21,10 @@ gauntlet through the env's HTTP protocol (`/game`, `/move`, `/resign`).
 Local harness, 3 practice trials vs the house gauntlet (depth-2 to
 nodes-500k): Elo 1,279 / 997 / 1,545, mean ~1,274. Practice floor is 1,154.
 
+Per trial (wins/draws/losses, plies to spare): trial-0 2/2/2 (68),
+trial-1 1/1/4 (146), trial-2 4/1/1 (338). Think time ~3.6-3.9 s/move
+mean, max ~7.1 s (limit 10 s); trial wall ~1,250-1,325 s (limit 1,800 s).
+
 ## Determinism
 
 The same position and history always give the same move. Replays are
