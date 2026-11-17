@@ -1,5 +1,9 @@
 # Tiny Chess — a 4 KB chess engine
 
+[![make.fun · tiny-chess-01](https://make.fun/badge/tiny-chess-01.svg)](https://make.fun/bounty/tiny-chess-01?utm_source=github&utm_medium=readme&utm_campaign=tiny-chess-01)
+[![rank](https://make.fun/badge/tiny-chess-01/riandi21/tiny-chess-4k/rank.svg)](https://make.fun/bounty/tiny-chess-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=tiny-chess-01)
+[![reward](https://make.fun/badge/tiny-chess-01/riandi21/tiny-chess-4k/reward.svg)](https://make.fun/bounty/tiny-chess-01?utm_source=github&utm_medium=readme&utm_campaign=tiny-chess-01)
+
 A chess engine in a single `main.py` (3,923 bytes), Python 3.13 standard
 library only. Built for make.fun's tiny-chess-01: 8 games against the house
 gauntlet through the env's HTTP protocol (`/game`, `/move`, `/resign`).
