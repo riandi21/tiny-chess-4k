@@ -4,7 +4,7 @@
 [![rank](https://make.fun/badge/tiny-chess-01/riandi21/tiny-chess-4k/rank.svg)](https://make.fun/bounty/tiny-chess-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=tiny-chess-01)
 [![reward](https://make.fun/badge/tiny-chess-01/riandi21/tiny-chess-4k/reward.svg)](https://make.fun/bounty/tiny-chess-01?utm_source=github&utm_medium=readme&utm_campaign=tiny-chess-01)
 
-A chess engine in a single `main.py` (3,923 bytes), Python 3.13 standard
+A chess engine in a single `main.py` (3,929 bytes), Python 3.13 standard
 library only. Built for make.fun's tiny-chess-01: 8 games against the house
 gauntlet through the env's HTTP protocol (`/game`, `/move`, `/resign`).
 
@@ -17,7 +17,9 @@ gauntlet through the env's HTTP protocol (`/game`, `/move`, `/resign`).
   search: the first move searches the full window, later moves probe a
   null window first and re-search on fail-high.
 - Transposition table (Zobrist hashing), MVV-LVA + killer-move ordering,
-  quiescence over captures, promotions and check replies.
+  quiescence over captures, promotions and check replies. Check
+  extension: a position with the side to move in check searches one ply
+  deeper.
 - Evaluation: material (P100 N320 B330 R500 Q900) + full piece-square
   tables + bishop pair +30 + passed pawns + king safety.
 - One-entry opening book: Alekhine Defence as White, the position after
@@ -30,14 +32,14 @@ gauntlet through the env's HTTP protocol (`/game`, `/move`, `/resign`).
 
 ## Practice results
 
-Local harness, v6 (PVS + Alekhine book) trial-0 equivalent, 6 games vs
-the house gauntlet (depth-2 to nodes-500k): 4 wins / 0 draws / 2 losses.
-Split-a (depth-2/3/4): 3/3 wins by checkmate, Elo 2,112, 258 plies to
-spare. The Alekhine trap reproduced in the harness: win by checkmate vs
-depth-3 in 115 plies, 85 to spare. The two losses are both as Black vs
-the nodes engines (nodes-100k Berlin, nodes-500k Philidor). v5, for
-comparison, went 2/2/2 in trial-0 (practice Elo 1,279). Practice floor
-is 1,154. Think time ~4.0 s/move mean, max ~6.6 s (limit 10 s).
+Local harness, v11 (PVS + Alekhine book + check extension) full trial-0,
+6 games vs the house gauntlet (depth-2 to nodes-500k): 4 wins / 0 draws /
+2 losses, local Elo 1,451, 445 plies to spare — the strongest version so
+far (v6: same 4/0/2, Elo 1,279 on the server grade, 258 plies to spare
+locally). Wins by checkmate vs depth-2 (65 plies), depth-3 (56), depth-4
+(135) and nodes-250k (99). The two losses are both as Black vs the nodes
+engines (nodes-100k Berlin, nodes-500k Philidor). Practice floor is
+1,154. Think time ~4.2 s/move mean, max ~6.7 s (limit 10 s).
 
 ## Determinism
 
